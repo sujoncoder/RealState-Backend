@@ -24,6 +24,14 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
+// default route
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Wellcome to realEstate server.",
+  });
+});
+
 app.use(express.static(path.join(__dirname, "/client/dist")));
 
 app.get("*", (req, res) => {
